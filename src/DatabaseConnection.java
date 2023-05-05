@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 public class DatabaseConnection {
     private Connection connection;
-    public boolean connect( String connectionString){
+    public boolean connect(String connectionString){
         try {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             this.connection = DriverManager.getConnection("mysql://localhost/hospital?user=root&password=");

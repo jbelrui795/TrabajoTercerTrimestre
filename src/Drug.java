@@ -17,6 +17,6 @@ public class Drug implements Comparator<Drug> {
         return Objects.hash(drugName, id);
     }
     public int compare(Drug arg0, Drug arg1){
-        return arg0.getId()>arg1.getId()
+
     }
 }
