@@ -3,7 +3,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 public class DatabaseConnection {
     private Connection connection;
-    public boolean connect(String connectionString){
+    private static DatabaseConnection databaseConnection;
+    private DatabaseConnection() {
+
+    }
+    private boolean connect(String connectionString){
         try {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             this.connection = DriverManager.getConnection("mysql://localhost/hospital?user=root&password=");
@@ -27,5 +31,21 @@ public class DatabaseConnection {
             e.printStackTrace();
             return false;
         }
+    }
+
+    /**
+     * Si no hay creada una instancia de DatabaseConnection me crea la instancia pero
+     * si hay una instancia creada me devuelve el valor de la instancia creada anteriormente
+     * @return
+     */
+    public static DatabaseConnection getInstance(){
+        if (DatabaseConnection.databaseConnection == null){
+            DatabaseConnection.databaseConnection = new DatabaseConnection();
+        }
+        return databaseConnection;
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }

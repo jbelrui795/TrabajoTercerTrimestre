@@ -1,11 +1,11 @@
 public class Paciente {
     private int id;
     private String nombre;
-    private String edad;
+    private int edad;
     private String direccion;
     private String telefono;
 
-    public Paciente(int id, String nombre, String edad, String direccion, String telefono){
+    public Paciente(int id, String nombre, int edad, String direccion, String telefono){
         super();
         this.id=id;
         this.nombre=nombre;
@@ -25,10 +25,10 @@ public class Paciente {
     public void setNombre(String nombre){
         this.nombre=nombre;
     }
-    public String getEdad(){
+    public int getEdad(){
         return edad;
     }
-    public void setEdad(String edad){
+    public void setEdad(int edad){
         this.edad=edad;
     }
     public String getDireccion(){
