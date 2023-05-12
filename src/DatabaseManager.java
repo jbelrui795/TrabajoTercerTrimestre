@@ -6,6 +6,7 @@ public class DatabaseManager {
     private DatabaseConnection databaseConnection;
     private Connection con;
     private Paciente paciente;
+    private PreparedStatement pStatement;
 
     public DatabaseManager(){
         this.databaseConnection = DatabaseConnection.getInstance();
@@ -84,17 +85,38 @@ public class DatabaseManager {
             JOptionPane.showMessageDialog(null, "Error de conexión");
         }
     }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean eliminarPaciente(int id){
+        boolean deleted = false;
         PreparedStatement ps;
         String sql;
+
         try {
-        ps = databaseConnection.getConnection("DELETE FROM paciente WHERE id=?");
-        ps.setInt(1,id);
+            con = databaseConnection.getConnection();
+            sql = "DELETE FROM pacientes WHERE id=?";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1,id);
+
         } catch (SQLException e){
 
         }
-        return
+        return deleted;
     }
 
+    public boolean actualizarPaciente(Paciente paciente){
+        boolean updated = false;
+        String sql;
+        String changes;
+        try{
+            con = databaseConnection.getConnection();
+            sql = "UPDATE pacientes SET ";
+        } catch (SQLException e){
 
+        }
+    }
 }
