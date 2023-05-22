@@ -46,7 +46,7 @@ public class TestDatabase {
 
     //databaseManager.exportarXml();
 
-    // databaseManager.comprobarIntegridadCitas();
+
     }
     public void imprimirArray(ArrayList<Object> arr){
         // Recorremos el array de getDatosTabla e imprimimos su valor dependiendo de su tipo
