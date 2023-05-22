@@ -1,11 +1,28 @@
 public class Medico {
+    public static final String NOMBRE_TABLA="medicos";
     private int id;
     private String nombre;
     private String especialidad;
     private String telefono;
     private String direccion;
+
+    /**
+     * Constructor para crear instancia de cita vacia
+     */
+    public Medico(){
+
+    }
+
+    /**
+     * Constructor para crear instancia de medico con todos sus datos
+     * @param id id medico
+     * @param nombre nombre medico
+     * @param especialidad especialidad medico
+     * @param telefono telefono medico
+     * @param direccion direccion medico
+     */
     public Medico(int id, String nombre, String especialidad, String telefono, String direccion){
-        super();
+
         this.id=id;
         this.nombre=nombre;
         this.especialidad=especialidad;
@@ -39,7 +56,7 @@ public class Medico {
     public String getDireccion(){
         return direccion;
     }
-    public void setDireccion(){
+    public void setDireccion(String direccion){
         this.direccion=direccion;
     }
 
