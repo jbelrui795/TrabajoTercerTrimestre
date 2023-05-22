@@ -564,7 +564,7 @@ public class DatabaseManager {
 
                 }
             }
-            // bucle para recorrer los hijos de la etiqueta medicos
+            // bucle para recorrer los hijos de la etiqueta citas
             for (int i = 0; i < citas.getLength(); i++) {
                 Node nodoActual = citas.item(i);
                 if (nodoActual.getNodeType() == Document.ELEMENT_NODE){
