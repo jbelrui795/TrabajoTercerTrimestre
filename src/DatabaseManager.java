@@ -605,46 +605,5 @@ public class DatabaseManager {
         }
     }
 
-    /**
-     * Comprueba la integridad referencial de las citas ya que es la unica tabla con relaciones
-     */
-    public void comprobarIntegridadCitas() {
-        try {
-            Statement stmtCitas = con.createStatement();
-            ResultSet citas = stmtCitas.executeQuery("SELECT * FROM citas");
-            PreparedStatement stmtMedico = con.prepareStatement("SELECT COUNT(id) FROM medicos WHERE id=?");
-            PreparedStatement stmtPaciente = con.prepareStatement("SELECT COUNT(id) FROM pacientes WHERE id=?");
-            while (citas.next()) {
-                Cita citaActual = new Cita(citas.getInt(1), citas.getInt(2), citas.getInt(3));
-                System.out.println("Cita " + citaActual.getId());
-                System.out.println("Relación a médico \n -------------");
-                if (citaActual.getId_medico() > 0) {
-                    stmtMedico.setInt(1, citaActual.getId_medico());
-                    ResultSet rsMedico = stmtMedico.executeQuery();
-                    if (rsMedico.next() && rsMedico.getInt(1) > 0) {
-                        System.out.println("La relacion es la correcta");
-                    } else {
-                        System.out.println("La celda apunta a un id eliminado");
-                    }
-                } else {
-                    System.out.println("No hay un medico asignado a la cita");
-                }
-                System.out.println("Relación a paciente \n -------------");
-                if (citaActual.getId_paciente() > 0) {
-                    stmtPaciente.setInt(1, citaActual.getId_paciente());
-                    ResultSet rsPaciente = stmtPaciente.executeQuery();
-                    if (rsPaciente.next() && rsPaciente.getInt(1) > 0) {
-                        System.out.println("La relacion es la correcta");
-                    } else {
-                        System.out.println("La celda apunta a un id eliminado");
-                    }
-                } else {
-                    System.out.println("No hay un paciente asignado a la cita");
-                }
-                System.out.println("----------------------------------");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 }
